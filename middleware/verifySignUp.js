@@ -25,36 +25,44 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         });
         return;
       }
+      else{
+        if(req.body.password.length<8||req.body.password.length>16){
+          res.status(400).send({
+            message: "Password not allowed!"
+          });
+          return;
+        }
+        else{
+          if(req.body.password.toLowerCase()==req.body.password){
+            res.status(400).send({
+              message: "Password must be upper case at least one"
+            });
+            return;
+          }
+          else{
+            if(req.body.password.toUpperCase()==req.body.password){
+              res.status(400).send({
+                message: "Password must be lower case at least one"
+              });
+              return;
+            }
+            else{
+              // (?=.*[^a-zA-Z0-9])
+              var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,16}$/;
+              if (!decimal.test(req.body.password)) {
+                res.status(400).send({
+                  message: "Password not allowed!"
+                });
+                return;
+              }
+              else{
+                next()
+              }
+            }
+          }
+        }
+      }
     });
-
-    //Pass
-    if(req.body.password.length<8||req.body.password.length>16){
-      res.status(400).send({
-        message: "Password not allowed!"
-      });
-      return;
-    }
-    if(req.body.password.toLowerCase()==req.body.password){
-      res.status(400).send({
-        message: "Password must be upper case at least one"
-      });
-      return;
-    }
-    if(req.body.password.toUpperCase()==req.body.password){
-      res.status(400).send({
-        message: "Password must be lower case at least one"
-      });
-      return;
-    }
-    // (?=.*[^a-zA-Z0-9])
-    var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,16}$/;
-    if(!decimal.test(req.body.password)) {
-      res.status(400).send({
-        message: "Password not allowed!"
-      });
-      return;
-    }
-    next();
   });
 };
 
