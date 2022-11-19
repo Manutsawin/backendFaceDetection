@@ -1,15 +1,15 @@
 require('dotenv').config();
 module.exports = {
-    HOST: process.env.POSTGRES_HOST,
-    USER: process.env.POSTGRES_USER,
-    port: process.env.POSTGRES_PORT,
-    PASSWORD: process.env.POSTGRES_PASSWORD,
-    DB: process.env.POSTGRES_DATABASE,
-    dialect: process.env.POSTGRES_DIALECT,
+    HOST: "ec2-18-215-41-121.compute-1.amazonaws.com",
+    USER: "khsudqauxcthts",
+    port: 5432,
+    PASSWORD: "133b21d7ffa6629dab436ba0f53219f32acfcdfcabcaa7d7825cf62673196766",
+    DB: "d6p2pgpkc2u5tp",
+    dialect: "postgres",
     pool: {
-      max: parseInt(process.env.POSTGRES_MAX),
-      min: parseInt(process.env.POSTGRES_MIN),
-      acquire: parseInt(process.env.POSTGRES_ACQUIRE),
-      idle: parseInt(process.env.POSTGRES_IDLE)
-    }
+        max: 5, 
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+  }
   };
