@@ -1,4 +1,3 @@
-require('dotenv').config();
 module.exports = {
     HOST: "ec2-18-215-41-121.compute-1.amazonaws.com",
     USER: "khsudqauxcthts",
