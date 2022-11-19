@@ -30,7 +30,7 @@ router.post("/detail",
   detailController.create
 );
 
-router.post("/detail",
+router.post("/detailGet",
   [
     authJwt.verifyToken,
   ], 
