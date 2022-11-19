@@ -1,4 +1,4 @@
 require('dotenv').config();
 module.exports = {
-    secret:"sadasdasdasdsad"
+    secret:"asdasdiowerwlekpwoeorikpoeriopwer-secret-key-faceDetection"
 };
